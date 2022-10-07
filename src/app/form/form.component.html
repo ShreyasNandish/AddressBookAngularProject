@@ -1,0 +1,79 @@
+
+ <div class="form-header">
+    <div class="form-main">
+        <mat-card class="form-head">
+            <div class="form-heading-title">
+                <mat-card-title>PERSON ADDRESS FORM</mat-card-title>
+            </div>
+            <div class="cancel-icon" (click)="onCancel()">
+                <mat-icon>cancel</mat-icon>
+            </div>
+        </mat-card>
+        <div>
+            <form class="form-content"  >
+
+                <!-- input for name -->
+                <label for="name">Name</label>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <input matInput name="name" [(ngModel)] = "this.contact.name">
+                </mat-form-field>
+
+                <!-- input for phone number -->
+                <label for="name">Phone Number</label>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <input matInput name="phoneNumber"  [(ngModel)] = "this.contact.phoneNumber">
+                </mat-form-field>
+
+                <!-- input for address -->
+                <label for="name">Address</label>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <textarea matInput name="address"  [(ngModel)] = "this.contact.address"></textarea>
+                </mat-form-field>
+
+                <!-- input for state,city and zip -->
+                <div class="city-state-zip-div">
+                    <div>
+                        <label for="">State</label>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Select City</mat-label>
+                            <mat-select name="state"  [(ngModel)] = "this.contact.state">
+                                <mat-option *ngFor="let state of states" [value]="state">
+                                    {{state}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- input for city -->
+                    <div>
+                        <label for="">City</label>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Select City</mat-label>
+                            <mat-select name="city"  [(ngModel)] = "this.contact.city">
+                                <mat-option *ngFor="let city of cities" [value]="city">
+                                    {{city}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- input for zip code -->
+                    <div>
+                        <label for="">Zip Code</label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput name="zipCode"  [(ngModel)] = "this.contact.zipCode">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- add and reset button -->
+                <div class="buttonParent">
+                    
+                    <button mat-raised-button class="button addButton" id="addButton" (click)="addContact()" *ngIf="this.id == null">Add</button>
+                    <button mat-raised-button class="button updateButton" id="updateButton" (click)="updateContact()" *ngIf="this.id != null">Update</button>
+                    <button mat-raised-button class="button resetButton" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
